@@ -15,7 +15,7 @@ class HomeViewModel(application: Application) :
     private val homeUseCase: HomeUseCase by lazy { HomeUseCase() }
 
     private val _successLiveData by lazy { MutableLiveData<List<Track>>() }
-    private val _errorLiveData by lazy { MutableLiveData<String>() }
+    private val _errorLiveData by lazy { MutableLiveData<String?>() }
     private val _loadingLiveData by lazy { MutableLiveData<Boolean>() }
 
     val successLiveData: LiveData<List<Track>> get() = _successLiveData
@@ -23,7 +23,6 @@ class HomeViewModel(application: Application) :
     val loadingLiveData: LiveData<Boolean> get() = _loadingLiveData
 
     private lateinit var artistShuffledList: List<Track>
-
 
     fun getArtistShuffled(artistIdList: String) {
         _loadingLiveData.postValue(true)
