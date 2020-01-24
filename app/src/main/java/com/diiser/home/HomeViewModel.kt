@@ -1,18 +1,18 @@
-package com.diiser
+package com.diiser.home
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
-import com.diiser.HomeUseCase.Companion.NETWORK_ERROR_CODE
+import com.diiser.R
+import com.diiser.home.HomeUseCase.Companion.NETWORK_ERROR_CODE
 import com.diiser.model.search.Track
 import kotlinx.coroutines.launch
 
-class HomeViewModel(application: Application) :
+class HomeViewModel(application: Application, private val homeUseCase: HomeUseCase) :
     AndroidViewModel(application) {
 
-    private val homeUseCase: HomeUseCase by lazy { HomeUseCase() }
 
     private val _successLiveData by lazy { MutableLiveData<List<Track>>() }
     private val _errorLiveData by lazy { MutableLiveData<String>() }

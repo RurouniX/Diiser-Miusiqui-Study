@@ -1,13 +1,13 @@
 package com.diiser.network.repository
 
-import com.diiser.network.config.apiService
+import com.diiser.network.config.NetworkConfig
 import com.diiser.network.utils.ResultType
 import com.diiser.network.utils.safeApiCall
 
-class HomeRepository {
+class HomeRepository(private val api: NetworkConfig) {
 
     suspend fun getArtists(artistIdList: String) = safeApiCall(call = {
-        val response = apiService.getArtistsAsync(artistIdList).await()
+        val response = api.apiService.getArtistsAsync(artistIdList).await()
         if (response.isSuccessful) {
             val body = response.body()
             if (body != null) {

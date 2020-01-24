@@ -1,4 +1,4 @@
-package com.diiser
+package com.diiser.home
 
 import android.os.Bundle
 import android.view.Menu
@@ -7,21 +7,17 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
-import androidx.lifecycle.SavedStateViewModelFactory
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.diiser.R
 import com.diiser.model.search.Track
 import kotlinx.android.synthetic.main.activity_home.*
+import org.koin.android.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
 
-    private val homeViewModel: HomeViewModel by lazy {
-        ViewModelProvider(
-            this,
-            SavedStateViewModelFactory(application, this)
-        )[HomeViewModel::class.java]
-    }
+    private val homeViewModel: HomeViewModel by viewModel()
+
     private val trackHomeAdapter: TrackHomeAdapter by lazy { TrackHomeAdapter() }
 
     override fun onCreate(savedInstanceState: Bundle?) {

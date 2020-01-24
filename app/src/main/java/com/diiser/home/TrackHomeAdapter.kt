@@ -1,8 +1,9 @@
-package com.diiser
+package com.diiser.home
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.diiser.R
 import com.diiser.model.search.Track
 
 class TrackHomeAdapter : RecyclerView.Adapter<TrackListViewHolder>() {
@@ -13,13 +14,14 @@ class TrackHomeAdapter : RecyclerView.Adapter<TrackListViewHolder>() {
         this.trackList = artistList
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) = TrackListViewHolder(
-        LayoutInflater.from(parent.context).inflate(
-            R.layout.item_artist_home,
-            parent,
-            false
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
+        TrackListViewHolder(
+            LayoutInflater.from(parent.context).inflate(
+                R.layout.item_artist_home,
+                parent,
+                false
+            )
         )
-    )
 
     override fun getItemCount() = trackList.size
 

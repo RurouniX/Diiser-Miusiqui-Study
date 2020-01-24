@@ -1,12 +1,10 @@
-package com.diiser
+package com.diiser.home
 
 import com.diiser.model.search.Track
 import com.diiser.network.repository.HomeRepository
 import com.diiser.network.utils.ResultType
 
-class HomeUseCase {
-
-    private val homeRepository: HomeRepository by lazy { HomeRepository() }
+class HomeUseCase(private val homeRepository: HomeRepository ) {
 
     private var lastArtistId = Int.MIN_VALUE
     private var trackList = listOf<Track>()

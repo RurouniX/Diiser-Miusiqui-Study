@@ -1,8 +1,9 @@
-package com.diiser
+package com.diiser.home
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.diiser.R
 import com.diiser.model.search.Track
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_artist_home.*
