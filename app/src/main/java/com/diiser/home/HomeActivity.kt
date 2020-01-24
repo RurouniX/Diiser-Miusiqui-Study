@@ -1,5 +1,6 @@
 package com.diiser.home
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -13,6 +14,7 @@ import com.diiser.R
 import com.diiser.model.search.Track
 import kotlinx.android.synthetic.main.activity_home.*
 import org.koin.android.viewmodel.ext.android.viewModel
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -75,6 +77,18 @@ class HomeActivity : AppCompatActivity() {
         when (item.itemId) {
             R.id.shuffle -> trackHomeAdapter.run {
                 //                setItem(homeViewModel.reShuffle())
+
+                var intent: Intent? = null
+                try {
+                    intent = Intent(
+                        this@HomeActivity,
+                        Class.forName("com.diiser.player.PlayerActivity")
+                    )
+                    startActivity(intent)
+                } catch (e: ClassNotFoundException) {
+                    e.printStackTrace()
+                }
+
                 notifyDataSetChanged()
             }
         }

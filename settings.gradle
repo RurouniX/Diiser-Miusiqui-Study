@@ -1,2 +1,2 @@
-include ':app', ':network', ':model'
+include ':app', ':network', ':model', ':player'
 rootProject.name='Diiser Miusiqui'
