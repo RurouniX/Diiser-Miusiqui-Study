@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Diiser Muisiqui</string>
+
+    <!--    Home stuffs-->
+    <string name="home_label">Diiser Muisiqui</string>
+    <string name="home_item_subtitle">%s (%s)</string>
+
+    <!--    menu item-->
+    <string name="menu_reshuffle">ReShuffle</string>
+    <!--    network error -->
+    <string name="no_connection_error">Verifique sua conexão\ne tente novamente</string>
+    <string name="not_found_error">Não temos músicas disponíveis no momento</string>
+    <string name="generic_error">Serviço indisponível no momento, tente novamente mais tarde</string>
+    <string name="try_again">Tentar novamente</string>
+    <string name="title_player">Player module</string>
+
+</resources>
