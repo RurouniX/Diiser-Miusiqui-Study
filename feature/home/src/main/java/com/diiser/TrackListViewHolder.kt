@@ -3,7 +3,8 @@ package com.diiser
 import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
+//TODO consertar glide
+//import com.bumptech.glide.Glide
 import com.diiser.R
 import com.diiser.model.search.Track
 
@@ -16,9 +17,9 @@ class TrackListViewHolder(private val containerView: View) :
                 artist.name,
                 album.title
             )
-            Glide.with(containerView).load(album.cover).circleCrop()
-                .placeholder(R.drawable.ic_art_track)
-                .into(findViewById(R.id.itemArtistImg))
+//            Glide.with(containerView).load(album.cover).circleCrop()
+//                .placeholder(R.drawable.ic_art_track)
+//                .into(findViewById(R.id.itemArtistImg))
             findViewById<TextView>(R.id.itemArtistTitle).text = title
         }
     }

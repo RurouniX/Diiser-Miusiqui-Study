@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import com.diiser.R
-import com.diiser.home.HomeUseCase.Companion.NETWORK_ERROR_CODE
+import com.diiser.HomeUseCase.Companion.NETWORK_ERROR_CODE
 import com.diiser.model.search.Track
 import kotlinx.coroutines.launch
 

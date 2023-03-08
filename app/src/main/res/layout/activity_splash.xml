@@ -7,14 +7,26 @@
     tools:context=".splash.SplashActivity">
 
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/splash_button"
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="wrap_content"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/splash_txt"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        app:lottie_rawRes="@raw/splash_icon" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/splash_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Clica aqui"
+        android:text="@string/splash_app_name"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/splash_txt"
+        app:layout_constraintVertical_bias="0.74" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
