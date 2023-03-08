@@ -1,7 +1,6 @@
 package com.diiser.network.config
 
 import android.content.Context
-import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.readystatesoftware.chuck.ChuckInterceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -16,7 +15,6 @@ class NetworkConfig(private val context: Context) {
         Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(provideOkHttpClient())
-            .addCallAdapterFactory(CoroutineCallAdapterFactory())
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(Api::class.java)
     }

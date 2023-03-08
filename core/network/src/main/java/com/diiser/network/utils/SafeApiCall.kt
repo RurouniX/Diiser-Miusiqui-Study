@@ -1,16 +1,34 @@
 package com.diiser.network.utils
 
-import java.io.IOException
+import retrofit2.HttpException
 
-suspend fun <T : Any> safeApiCall(call: suspend () -> ResultType<T>, errorMessage: String = ""): ResultType<T> =
-    try {
-        call.invoke()
-    } catch (e: Exception) {
-        ResultType.Fail(IOException(errorMessage, e))
+suspend fun <T : Any> safeApiCall(call: suspend () -> T?): ResultType<T> = try {
+    val dataFromRemote = call()
+    if (dataFromRemote == null) {
+        ResultType.Fail(ResponseError(Throwable("Request Error")))
+    } else {
+        ResultType.Success(dataFromRemote)
     }
-
-sealed class ResultType<out T : Any> {
-    data class Success<out T : Any>(val data: T) : ResultType<T>()
-    data class Error<out T : Any>(val data: T) : ResultType<T>()
-    data class Fail(val exception: Exception) : ResultType<Nothing>()
+} catch (exception: Throwable) {
+    if (exception is HttpException) {
+        ResultType.Fail(ResponseError(exception, exception.code()))
+    } else {
+        ResultType.Fail(ResponseError(exception))
+    }
 }
+
+sealed class ResultType<out T> {
+    data class Success<out T>(val data: T) : ResultType<T>()
+    data class Fail(val exception: ResponseError) : ResultType<Nothing>()
+}
+
+fun <T> ResultType<T>.handleResultType(
+    success: (T) -> Unit,
+    error: (ResponseError) -> Unit
+) {
+    if (this is ResultType.Success) success(data)
+    else if (this is ResultType.Fail) error(exception)
+}
+
+class ResponseError(override val cause: Throwable = Throwable(), val code: Int = 0) :
+    Exception("",cause)

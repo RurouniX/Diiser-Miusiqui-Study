@@ -7,6 +7,7 @@
     tools:context=".home.HomeActivity">
 
     <com.diiser.stateview.StateView
+        android:id="@+id/home_stateview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 

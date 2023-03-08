@@ -7,14 +7,13 @@ import com.diiser.network.utils.safeApiCall
 class HomeRepository(private val api: NetworkConfig) {
 
     suspend fun getArtists(artistIdList: String) = safeApiCall(call = {
-        val response = api.apiService.getArtistsAsync(artistIdList).await()
-        if (response.isSuccessful) {
-            val body = response.body()
-            if (body != null) {
-                ResultType.Success(response)
-            } else
-                ResultType.Error(response)
-        } else
-            ResultType.Error(response)
+        api.apiService.getArtistsAsync(artistIdList)
     })
+
+    suspend fun getHomeData(search: String) = safeApiCall(call = {
+        api.apiService.getHomeData(search)
+    })
+
 }
+
+
