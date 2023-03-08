@@ -1,0 +1,14 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+dependencies {
+    implementation 'com.airbnb.android:lottie:6.0.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+
+}
+
+android {
+    namespace 'com.diiser.stateview'
+}

@@ -1,2 +1,2 @@
-include ':app', ':core:network', ':core:model', ':feature:player', ':core:navigation', ':feature:home'
+include ':app', ':core:network', ':core:model', ':feature:player', ':core:navigation', ':feature:home', ':core:customview:stateview'
 rootProject.name='Diiser Miusiqui'

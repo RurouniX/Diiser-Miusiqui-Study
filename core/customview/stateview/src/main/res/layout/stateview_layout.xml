@@ -2,30 +2,40 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/stateview"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".splash.SplashActivity">
+    android:layout_height="match_parent">
 
     <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/stateview_Img"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/splash_txt"
+        app:layout_constraintBottom_toTopOf="@id/stateview_txt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/splash_icon" />
+        app:lottie_rawRes="@raw/warning_status" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/splash_txt"
+        android:id="@+id/stateview_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/splash_app_name"
+        android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/splash_txt"
-        app:layout_constraintVertical_bias="0.74" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="@tools:sample/cities" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/stateview_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="clique aqui"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stateview_txt" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

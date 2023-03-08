@@ -97,7 +97,6 @@ subprojects {
                     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
                     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
                     implementation 'io.insert-koin:koin-android:3.3.3'
-                    implementation 'com.airbnb.android:lottie:6.0.0'
                     implementation "com.jakewharton.timber:timber:4.7.1"
 
                 }

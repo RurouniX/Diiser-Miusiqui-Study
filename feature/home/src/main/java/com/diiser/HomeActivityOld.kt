@@ -16,12 +16,13 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.diiser.databinding.ActivityHomeBinding
+import com.diiser.databinding.ActivityHomeOldBinding
 import com.diiser.model.search.Track
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivityOld : AppCompatActivity() {
 
-    private lateinit var binding: ActivityHomeBinding
+    private lateinit var binding: ActivityHomeOldBinding
 
     private val homeArtistLoading: ProgressBar by lazy { binding.homeArtistLoading }
     private val homeArtistErrorMessage: TextView by lazy { binding.homeArtistErrorMessage }
@@ -36,7 +37,7 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
-        binding = ActivityHomeBinding.inflate(layoutInflater)
+        binding = ActivityHomeOldBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
         if (savedInstanceState == null) {
@@ -47,11 +48,11 @@ class HomeActivity : AppCompatActivity() {
     }
 
     private fun startObservers() = with(homeViewModel) {
-        successLiveData.observe(this@HomeActivity, Observer {
+        successLiveData.observe(this@HomeActivityOld, Observer {
             mountList(it)
         })
-        errorLiveData.observe(this@HomeActivity, Observer { showError(it) })
-        loadingLiveData.observe(this@HomeActivity, Observer { isLoading(it) })
+        errorLiveData.observe(this@HomeActivityOld, Observer { showError(it) })
+        loadingLiveData.observe(this@HomeActivityOld, Observer { isLoading(it) })
     }
 
     private fun isLoading(isLoading: Boolean) {
@@ -93,7 +94,7 @@ class HomeActivity : AppCompatActivity() {
                 var intent: Intent? = null
                 try {
                     intent = Intent(
-                        this@HomeActivity,
+                        this@HomeActivityOld,
                         Class.forName("com.diiser.player.PlayerActivity")
                     )
                     startActivity(intent)
