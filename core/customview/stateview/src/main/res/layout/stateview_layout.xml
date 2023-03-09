@@ -8,34 +8,39 @@
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/stateview_Img"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/stateview_txt"
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.3"
         app:lottie_autoPlay="true"
         app:lottie_loop="true"
-        app:lottie_rawRes="@raw/warning_status" />
+        app:lottie_rawRes="@raw/loading_music"
+        tools:background="@android:color/black" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/stateview_txt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:textSize="26sp"
+        android:textColor="@android:color/white"
         android:gravity="center"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/stateview_Img"
         tools:text="@tools:sample/cities" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <Button
         android:id="@+id/stateview_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="clique aqui"
+        android:layout_margin="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/stateview_txt" />
+        app:layout_constraintTop_toBottomOf="@id/stateview_txt"
+        tools:text="Tentar novamente" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,17 +1,23 @@
 package com.diiser.home
 
+import com.diiser.model.home.SearchModel
 import com.diiser.model.search.Track
 import com.diiser.network.repository.HomeRepository
-import com.diiser.network.utils.ResultType
+import com.diiser.network.utils.ResponseError
+import com.diiser.network.utils.handleResultType
 
-class HomeUseCase(private val homeRepository: HomeRepository ) {
+class HomeUseCase(private val homeRepository: HomeRepository) {
 
     private var lastArtistId = Int.MIN_VALUE
     private var trackList = listOf<Track>()
 
-//    suspend fun getShuffledMusic(artistIdList: String, successCall: (List<Track>) -> Unit, errorCall: (Int) -> Unit) {
-//        homeRepository.getArtists(artistIdList).let { response ->
-//
+    suspend fun getShuffledMusic(
+        artistIdList: String,
+        successCall: (List<Track>) -> Unit,
+        errorCall: (Int) -> Unit
+    ) {
+        homeRepository.getArtists(artistIdList).let { response ->
+
 //            when (response) {
 //                is ResultType.Success -> {
 //                    response.data.body()?.let {
@@ -23,12 +29,29 @@ class HomeUseCase(private val homeRepository: HomeRepository ) {
 //                        ?: run { errorCall.invoke(response.data.code()) }
 //                }
 //
-//                is ResultType.Error -> errorCall.invoke(response.data.code())
-//
-//                is ResultType.Fail -> errorCall.invoke(NETWORK_ERROR_CODE)
 //            }
 //        }
-//    }
+        }
+    }
+
+    suspend fun getHomeData(
+        search: String,
+        onSuccess: (SearchModel) -> Unit,
+        onError: (ResponseError) -> Unit
+    ) {
+        val result = homeRepository.getHomeData(search)
+
+        result.handleResultType(
+            success = {
+                onSuccess(it)
+            },
+            error = {
+                onError(it)
+            }
+        )
+    }
+}
+
 
 //    fun shuffleMusicList(artistList: List<Track> = trackList): List<Artist> {
 //
@@ -60,10 +83,10 @@ class HomeUseCase(private val homeRepository: HomeRepository ) {
 //        return shuffledList
 //    }
 
-    companion object{
-        const val ARTIST_TYPE = "artist"
-        const val NETWORK_ERROR_CODE = 0
-    }
+//companion object {
+//    const val ARTIST_TYPE = "artist"
+//    const val NETWORK_ERROR_CODE = 0
+//}
 
-}
+
 

@@ -16,7 +16,7 @@ class TrackListViewHolder(private val containerView: View) :
                 album.title
             )
             Glide.with(containerView).load(album.cover).circleCrop()
-                .placeholder(R.drawable.ic_art_track)
+                .placeholder(R.drawable.ic_music_placeholder)
                 .into(findViewById(R.id.itemArtistImg))
             findViewById<TextView>(R.id.itemArtistTitle).text = title
         }

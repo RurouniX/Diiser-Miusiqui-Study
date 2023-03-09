@@ -1,16 +1,23 @@
 package com.diiser
 
 import android.app.Application
+import android.view.View
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.diiser.R
+import com.diiser.home.HomeUseCase
+import com.diiser.model.home.SearchModel
 import com.diiser.model.search.Track
 import kotlinx.coroutines.launch
 
-class HomeViewModel(application: Application, private val homeUseCase: HomeUseCase) :
-    AndroidViewModel(application) {
+class HomeViewModel(private val homeUseCase: HomeUseCase) :
+    ViewModel() {
+
+
+    private val _homeDataLiveData = MutableLiveData<FlowState<SearchModel>>()
+    val homeDataLiveData: LiveData<FlowState<SearchModel>> = _homeDataLiveData
 
 
     private val _successLiveData by lazy { MutableLiveData<List<Track>>() }
@@ -44,13 +51,15 @@ class HomeViewModel(application: Application, private val homeUseCase: HomeUseCa
 
 //    fun reShuffle() = homeUseCase.shuffleMusicList()
 
-    //TODO NEW
     fun getHomeData(search: String = "rock") {
+        _homeDataLiveData.postLoading(View.VISIBLE)
         viewModelScope.launch {
             homeUseCase.getHomeData(search, onSuccess = {
-                it.toString()
+                _homeDataLiveData.postLoading(View.GONE)
+                _homeDataLiveData.postSuccess(it)
             }, onError = {
-                it.toString()
+                _homeDataLiveData.postLoading(View.GONE)
+                _homeDataLiveData.postError(it)
             })
         }
     }
@@ -62,4 +71,3 @@ class HomeViewModel(application: Application, private val homeUseCase: HomeUseCa
 //    }
 
 }
-

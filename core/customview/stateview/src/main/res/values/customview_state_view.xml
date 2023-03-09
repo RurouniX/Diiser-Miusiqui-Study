@@ -3,6 +3,10 @@
 
     <declare-styleable name="custom_stateview">
         <attr name="stateview_image" format="reference" />
+        <attr name="isLoading" format="boolean" />
+        <attr name="btn_try_again" format="string" />
+        <attr name="message" format="integer" />
+        <attr name="startLoading" format="boolean"/>
     </declare-styleable>
 
 </resources>
