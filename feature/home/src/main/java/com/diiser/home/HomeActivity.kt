@@ -2,19 +2,17 @@ package com.diiser.home
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import android.view.WindowManager
 import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.diiser.HomeViewModel
-import com.diiser.R
 import com.diiser.databinding.ActivityHomeBinding
+import com.diiser.model.home.DataModel
+import com.diiser.navigation.player.PlayerNavigation
 import com.diiser.observerEvents
 import com.diiser.stateview.StateView
 import com.google.android.material.internal.ViewUtils
-import org.koin.androidx.viewmodel.ext.android.getViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : AppCompatActivity() {
@@ -23,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityHomeBinding
 
-    private val homeAdapter: HomeViewAdapter by lazy { HomeViewAdapter() }
+    private val homeAdapter: HomeViewAdapter by lazy { HomeViewAdapter { clickListHomeItem(it) } }
 
     private val stateView: StateView by lazy { binding.homeStateview }
     private val listHome: RecyclerView by lazy { binding.list }
@@ -77,6 +75,10 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
+    private fun clickListHomeItem(dataModel: DataModel) {
+        PlayerNavigation.openPlayerActivity(this, dataModel)
+    }
+
     private fun changeListVisibility() {
         listHome.isVisible = !stateView.isVisible
 
@@ -96,5 +98,4 @@ class HomeActivity : AppCompatActivity() {
 
         }
     }
-
 }

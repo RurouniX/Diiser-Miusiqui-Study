@@ -32,7 +32,7 @@ object IntentUtils {
     }
 
     fun openFeatureIntent(context: Context, className: String, extras: Intent.() -> Unit = {}) {
-        openFeature(context, className, Intent.FLAG_ACTIVITY_NEW_TASK)
+        openFeature(context, className, Intent.FLAG_ACTIVITY_NEW_TASK, extras = extras)
     }
 
     fun openFeatureIntentWithoutStack(

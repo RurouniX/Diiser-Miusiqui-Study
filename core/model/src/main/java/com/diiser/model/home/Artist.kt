@@ -1,5 +1,9 @@
 package com.diiser.model.home
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Artist(
     val id: Int,
     val link: String,
@@ -11,4 +15,4 @@ data class Artist(
     val picture_xl: String,
     val tracklist: String,
     val type: String
-)
+) : Parcelable

@@ -1,5 +1,9 @@
 package com.diiser.model.home
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class DataModel(
     val album: Album,
     val artist: Artist,
@@ -17,4 +21,4 @@ data class DataModel(
     val title_short: String,
     val title_version: String,
     val type: String
-)
+) : Parcelable

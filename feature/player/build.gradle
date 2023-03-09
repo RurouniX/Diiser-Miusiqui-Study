@@ -3,6 +3,8 @@ apply plugin: 'kotlin-android'
 
 dependencies {
     implementation project(':app')
+    implementation project(':core:navigation')
+
 }
 
 android {
