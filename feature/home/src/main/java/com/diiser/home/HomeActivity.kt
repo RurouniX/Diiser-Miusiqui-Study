@@ -6,11 +6,10 @@ import android.widget.EditText
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.diiser.HomeViewModel
-import com.diiser.databinding.ActivityHomeBinding
-import com.diiser.model.home.DataModel
+import com.diiser.home.databinding.ActivityHomeBinding
+import com.diiser.model.player.Music
 import com.diiser.navigation.player.PlayerNavigation
-import com.diiser.observerEvents
+import com.diiser.viewmodelutils.observerEvents
 import com.diiser.stateview.StateView
 import com.google.android.material.internal.ViewUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -64,7 +63,7 @@ class HomeActivity : AppCompatActivity() {
 
         with(homeViewModel) {
             homeDataLiveData.observerEvents(this@HomeActivity, onSuccess = {
-                homeAdapter.setItems(it.dataModel)
+                homeAdapter.setItems(it.data)
             }, onError = {
                 showErrorView()
             }, onLoading = {
@@ -75,8 +74,8 @@ class HomeActivity : AppCompatActivity() {
 
     }
 
-    private fun clickListHomeItem(dataModel: DataModel) {
-        PlayerNavigation.openPlayerActivity(this, dataModel)
+    private fun clickListHomeItem(data: Music) {
+        PlayerNavigation.openPlayerActivity(this, data)
     }
 
     private fun changeListVisibility() {

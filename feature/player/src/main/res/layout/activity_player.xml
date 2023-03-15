@@ -1,15 +1,124 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:background="@android:color/black"
     tools:context="com.diiser.player.PlayerActivity">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/img_head"
+        android:layout_width="124dp"
+        android:layout_height="124dp"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
 
-    <TextView
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_music_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img_head"
+        tools:text="@tools:sample/first_names" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_artist_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/txt_music_name"
+        tools:text="@tools:sample/full_names" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/txt_others_musics"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:text="Outras musicas"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_artist_name" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_others_musics"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Sou um player" />
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/view_divider"
+        app:layout_constraintTop_toBottomOf="@id/txt_others_musics"
+        tools:listitem="@layout/list_others_music" />
+
+    <View
+        android:id="@+id/view_divider"
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_marginBottom="32dp"
+        android:background="#C8FFFFFF"
+        app:layout_constraintBottom_toTopOf="@id/bg_player_buttons"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <View
+        android:id="@+id/bg_player_buttons"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_margin="32dp"
+        android:background="@drawable/bg_player"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_back"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/icon_previous"
+        app:layout_constraintBottom_toBottomOf="@id/bg_player_buttons"
+        app:layout_constraintEnd_toStartOf="@id/bg_play"
+        app:layout_constraintStart_toStartOf="@id/bg_player_buttons"
+        app:layout_constraintTop_toTopOf="@id/bg_player_buttons" />
+
+    <View
+        android:id="@+id/bg_play"
+        android:layout_width="78dp"
+        android:layout_height="78dp"
+        android:background="@drawable/bg_play_stop"
+        android:padding="16dp"
+        app:layout_constraintBottom_toBottomOf="@id/btn_play"
+        app:layout_constraintEnd_toEndOf="@id/btn_play"
+        app:layout_constraintStart_toStartOf="@id/btn_play"
+        app:layout_constraintTop_toTopOf="@id/btn_play" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_play"
+        android:layout_width="46dp"
+        android:layout_height="46dp"
+        android:background="@drawable/icon_play"
+        app:layout_constraintBottom_toBottomOf="@id/bg_player_buttons"
+        app:layout_constraintEnd_toEndOf="@id/bg_player_buttons"
+        app:layout_constraintStart_toStartOf="@id/bg_player_buttons"
+        app:layout_constraintTop_toTopOf="@id/bg_player_buttons" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_next"
+        android:layout_width="32dp"
+        android:layout_height="32dp"
+        android:background="@drawable/icon_next"
+        app:layout_constraintBottom_toBottomOf="@id/bg_player_buttons"
+        app:layout_constraintEnd_toEndOf="@id/bg_player_buttons"
+        app:layout_constraintStart_toEndOf="@id/bg_play"
+        app:layout_constraintTop_toTopOf="@id/bg_player_buttons" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_player_control"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="bg_play, btn_back, btn_next, btn_play,bg_player_buttons" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

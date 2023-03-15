@@ -5,10 +5,10 @@ dependencies {
     api "androidx.appcompat:appcompat:1.6.1"
     implementation project(path: ':core:navigation')
     implementation project(path: ':feature:home')
+    implementation project(path: ':feature:player')
 
-    api "androidx.core:core-ktx:1.10.0-beta01"
-    api 'com.google.android.material:material:1.7.0'
-    api "androidx.recyclerview:recyclerview:1.2.1"
+    api 'androidx.core:core-ktx:1.9.0'
+    api 'com.google.android.material:material:1.8.0'
     implementation "androidx.constraintlayout:constraintlayout:2.1.4"
     api "androidx.lifecycle:lifecycle-extensions:2.2.0"
     api "androidx.lifecycle:lifecycle-runtime-ktx:2.6.0-rc01"
@@ -27,7 +27,7 @@ dependencies {
 
 android {
 
-    dynamicFeatures = [":feature:player"]
+//    dynamicFeatures = [":feature:player"]
     namespace 'com.diiser'
     buildFeatures {
         viewBinding true

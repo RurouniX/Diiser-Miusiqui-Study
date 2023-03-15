@@ -7,7 +7,8 @@ import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-private const val BASE_URL = " https://deezerdevs-deezer.p.rapidapi.com"
+private const val BASE_URL = "https://deezerdevs-deezer.p.rapidapi.com"
+private const val DEEZER_BASE_URL = "https://api.deezer.com/"
 
 class NetworkConfig(private val context: Context) {
 
@@ -38,5 +39,25 @@ class NetworkConfig(private val context: Context) {
                         ).build()
                 )
             }.build()
+    }
+}
+
+class DeezerNetworkConfig(private val context: Context) {
+
+    val apiService: DeezerApi by lazy {
+        Retrofit.Builder()
+            .baseUrl(DEEZER_BASE_URL)
+            .client(provideOkHttpClient())
+            .addConverterFactory(GsonConverterFactory.create())
+            .build().create(DeezerApi::class.java)
+    }
+
+    private fun provideOkHttpClient(): OkHttpClient {
+
+        val interceptor = HttpLoggingInterceptor()
+        interceptor.level = HttpLoggingInterceptor.Level.BODY
+        return OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .addInterceptor(ChuckInterceptor(context)).build()
     }
 }

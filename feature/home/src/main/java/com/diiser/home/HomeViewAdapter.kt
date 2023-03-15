@@ -4,17 +4,16 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.diiser.R
-import com.diiser.databinding.ListItemHomeBinding
-import com.diiser.model.home.DataModel
+import com.diiser.home.databinding.ListItemHomeBinding
+import com.diiser.model.player.Music
 
-class HomeViewAdapter(private val clickListHomeItem: (DataModel) -> Unit) :
+class HomeViewAdapter(private val clickListHomeItem: (Music) -> Unit) :
     RecyclerView.Adapter<HomeViewHolder>() {
 
-    private var searchModelList = listOf<DataModel>()
+    private var searchModelList = listOf<Music>()
 
-    fun setItems(dataModelList: List<DataModel>) {
-        this.searchModelList = dataModelList
+    fun setItems(dataList: List<Music>) {
+        this.searchModelList = dataList
         notifyItemRangeChanged(0, searchModelList.size)
     }
 
@@ -36,16 +35,16 @@ class HomeViewAdapter(private val clickListHomeItem: (DataModel) -> Unit) :
 
 class HomeViewHolder(private val view: ListItemHomeBinding) : RecyclerView.ViewHolder(view.root) {
 
-    fun bind(dataModel: DataModel, clickListHomeItem: (DataModel) -> Unit) {
+    fun bind(data: Music, clickListHomeItem: (Music) -> Unit) {
         with(view) {
-            Glide.with(view.root).load(dataModel.album.cover).circleCrop()
+            Glide.with(view.root).load(data.album.cover).circleCrop()
                 .placeholder(R.drawable.ic_music_placeholder)
                 .into(itemArtistImg)
 
-            itemArtistTitle.text = dataModel.title
-            itemArtistSubTitle.text = dataModel.artist.name
+            itemArtistTitle.text = data.title
+            itemArtistSubTitle.text = data.artist.name
             root.setOnClickListener {
-                clickListHomeItem(dataModel)
+                clickListHomeItem(data)
             }
         }
     }
