@@ -1,0 +1,14 @@
+plugins {
+    id 'com.android.library'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.diiser.testutils'
+}
+
+
+dependencies {
+    implementation project(path: ':core:providercontext')
+    implementation 'com.google.code.gson:gson:2.10.1'
+}

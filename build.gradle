@@ -58,7 +58,11 @@ subprojects {
                 }
 
                 testOptions {
-                    unitTests.returnDefaultValues = true
+                    unitTests {
+                        returnDefaultValues = true
+                        includeAndroidResources = true
+
+                    }
                 }
 
                 sourceSets {
@@ -90,14 +94,18 @@ subprojects {
                 }
 
                 dependencies {
-                    print("projeto - " + name + "\n")
 
                     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlinVersion"
-                    testImplementation 'junit:junit:4.12'
-                    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
+                    testImplementation 'junit:junit:4.13.2'
+                    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
                     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
                     implementation 'io.insert-koin:koin-android:3.3.3'
                     implementation "com.jakewharton.timber:timber:4.7.1"
+                    testImplementation "androidx.arch.core:core-testing:2.2.0"
+
+                    testImplementation "io.mockk:mockk:1.13.4"
+                    testImplementation 'org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4'
+
 
                 }
 

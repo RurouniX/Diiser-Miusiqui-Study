@@ -1,7 +1,7 @@
 package com.diiser.application
 
 import android.app.Application
-import com.diiser.homeModule
+import com.diiser.home.homeModule
 import com.diiser.player.playerModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
@@ -14,7 +14,7 @@ class DiiserApplication : Application() {
     override fun onCreate() {
         super.onCreate()
 
-        Timber.plant( Timber.DebugTree())
+        Timber.plant(Timber.DebugTree())
 
         startKoin {
             androidLogger(Level.DEBUG)
