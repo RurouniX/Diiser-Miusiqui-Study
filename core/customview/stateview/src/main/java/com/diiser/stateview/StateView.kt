@@ -70,7 +70,7 @@ class StateView(context: Context, attrs: AttributeSet? = null) : ConstraintLayou
             showLoading(VISIBLE)
     }
 
-    fun showLoading(visibility: Int) {
+    fun showLoading(visibility: Int = VISIBLE) {
         this.visibility = visibility
         mountLoading()
     }

@@ -7,6 +7,7 @@ dependencies {
     implementation project(':core:navigation')
     implementation project(':core:network')
     implementation project(path: ':core:viewmodelutils')
+    implementation project(path: ':core:customview:stateview')
 
 
     implementation 'com.github.bumptech.glide:glide:4.15.0'

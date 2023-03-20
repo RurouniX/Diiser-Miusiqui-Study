@@ -22,6 +22,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:textColor="@android:color/white"
+        android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/img_head"
@@ -30,8 +32,11 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/txt_artist_name"
         android:layout_width="wrap_content"
+
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
+        android:textColor="@android:color/white"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txt_music_name"
@@ -43,6 +48,8 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="Outras musicas"
+        android:textColor="@android:color/white"
+        android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/txt_artist_name" />
 
@@ -53,6 +60,22 @@
         app:layout_constraintBottom_toTopOf="@id/view_divider"
         app:layout_constraintTop_toBottomOf="@id/txt_others_musics"
         tools:listitem="@layout/list_others_music" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_others_musics"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="list_others_musics, txt_others_musics" />
+
+    <com.diiser.stateview.StateView
+        android:id="@+id/stateview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/view_divider"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_artist_name"
+        tools:visibility="gone" />
 
     <View
         android:id="@+id/view_divider"
