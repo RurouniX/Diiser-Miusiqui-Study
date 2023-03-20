@@ -10,9 +10,13 @@ import com.diiser.flowstate.FlowState
 import com.diiser.flowstate.postLoading
 import com.diiser.flowstate.postSuccess
 import com.diiser.model.player.OthersMusic
+import com.diiser.utils.ProviderContext
 import kotlinx.coroutines.launch
 
-class PlayerViewModel(private val playerUseCase: PlayerUseCase) : ViewModel() {
+class PlayerViewModel(
+    private val playerUseCase: PlayerUseCase,
+    private val providerContext: ProviderContext
+) : ViewModel() {
 
     private val _musicLiveData = MutableLiveData<FlowState<OthersMusic>>()
     val musicLiveData: LiveData<FlowState<OthersMusic>> = _musicLiveData
@@ -20,7 +24,7 @@ class PlayerViewModel(private val playerUseCase: PlayerUseCase) : ViewModel() {
 
     fun getOthersMusicByArtist(artistId: Int) {
 
-        viewModelScope.launch {
+        viewModelScope.launch(providerContext.main) {
             _musicLiveData.postLoading(VISIBLE)
             playerUseCase.getOthersMusicByArtist(artistId,
                 onSuccess = {

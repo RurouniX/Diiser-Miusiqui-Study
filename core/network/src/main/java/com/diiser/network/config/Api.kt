@@ -18,6 +18,6 @@ interface Api {
 
 interface DeezerApi {
     @GET("artist/{artistID}/top?limit=50")
-    suspend fun getOthersMusicBuArtist(@Path("artistID") artistID: Int): OthersMusic
+    suspend fun getOthersMusicByArtist(@Path("artistID") artistID: Int): OthersMusic
 
 }

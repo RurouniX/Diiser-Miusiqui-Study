@@ -1,4 +1,4 @@
-package com.diiser.player
+package com.diiser.navigation
 
 import android.content.Intent
 

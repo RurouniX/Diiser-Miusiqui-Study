@@ -1,0 +1,56 @@
+{
+  "data": [
+    {
+      "id": 1741590727,
+      "readable": true,
+      "title": "Metal",
+      "title_short": "Metal",
+      "title_version": "",
+      "link": "https://www.deezer.com/track/1741590727",
+      "duration": 80,
+      "rank": 385664,
+      "explicit_lyrics": false,
+      "explicit_content_lyrics": 0,
+      "explicit_content_cover": 2,
+      "preview": "https://cdns-preview-8.dzcdn.net/stream/c-811db5c463abd437ea1724328c49fbd5-2.mp3",
+      "contributors": [
+        {
+          "id": 168904857,
+          "name": "Divij Mosalpuri",
+          "link": "https://www.deezer.com/artist/168904857",
+          "share": "https://www.deezer.com/artist/168904857?utm_source=deezer&utm_content=artist-168904857&utm_term=0_1679347925&utm_medium=web",
+          "picture": "https://api.deezer.com/artist/168904857/image",
+          "picture_small": "https://e-cdns-images.dzcdn.net/images/artist/c906465442b3c79066395debb12930c5/56x56-000000-80-0-0.jpg",
+          "picture_medium": "https://e-cdns-images.dzcdn.net/images/artist/c906465442b3c79066395debb12930c5/250x250-000000-80-0-0.jpg",
+          "picture_big": "https://e-cdns-images.dzcdn.net/images/artist/c906465442b3c79066395debb12930c5/500x500-000000-80-0-0.jpg",
+          "picture_xl": "https://e-cdns-images.dzcdn.net/images/artist/c906465442b3c79066395debb12930c5/1000x1000-000000-80-0-0.jpg",
+          "radio": true,
+          "tracklist": "https://api.deezer.com/artist/168904857/top?limit=50",
+          "type": "artist",
+          "role": "Main"
+        }
+      ],
+      "md5_image": "c906465442b3c79066395debb12930c5",
+      "artist": {
+        "id": 168904857,
+        "name": "Divij Mosalpuri",
+        "tracklist": "https://api.deezer.com/artist/168904857/top?limit=50",
+        "type": "artist"
+      },
+      "album": {
+        "id": 316184267,
+        "title": "Metal",
+        "cover": "https://api.deezer.com/album/316184267/image",
+        "cover_small": "https://e-cdns-images.dzcdn.net/images/cover/c906465442b3c79066395debb12930c5/56x56-000000-80-0-0.jpg",
+        "cover_medium": "https://e-cdns-images.dzcdn.net/images/cover/c906465442b3c79066395debb12930c5/250x250-000000-80-0-0.jpg",
+        "cover_big": "https://e-cdns-images.dzcdn.net/images/cover/c906465442b3c79066395debb12930c5/500x500-000000-80-0-0.jpg",
+        "cover_xl": "https://e-cdns-images.dzcdn.net/images/cover/c906465442b3c79066395debb12930c5/1000x1000-000000-80-0-0.jpg",
+        "md5_image": "c906465442b3c79066395debb12930c5",
+        "tracklist": "https://api.deezer.com/album/316184267/tracks",
+        "type": "album"
+      },
+      "type": "track"
+    }
+  ],
+  "total": 1
+}

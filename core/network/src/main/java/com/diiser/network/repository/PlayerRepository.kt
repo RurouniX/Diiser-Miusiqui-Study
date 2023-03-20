@@ -6,7 +6,7 @@ import com.diiser.network.utils.safeApiCall
 class PlayerRepository(private val api: DeezerNetworkConfig) {
 
     suspend fun getOthersMusicByArtist(artistId: Int) = safeApiCall(call = {
-        api.apiService.getOthersMusicBuArtist(artistId)
+        api.apiService.getOthersMusicByArtist(artistId)
     })
 
 }

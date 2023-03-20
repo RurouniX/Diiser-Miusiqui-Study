@@ -12,8 +12,8 @@ import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.diiser.model.player.Music
+import com.diiser.navigation.IntentExtensions.getParcelable
 import com.diiser.navigation.player.PlayerNavigation
-import com.diiser.player.IntentExtensions.getParcelable
 import com.diiser.player.databinding.ActivityPlayerBinding
 import com.diiser.viewmodelutils.observerEvents
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -148,5 +148,6 @@ class PlayerActivity : AppCompatActivity() {
         btnPlay.background =
             ContextCompat.getDrawable(this@PlayerActivity, R.drawable.icon_play)
         setupView(music)
+
     }
 }

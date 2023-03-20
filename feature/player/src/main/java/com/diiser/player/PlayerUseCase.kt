@@ -18,7 +18,7 @@ class PlayerUseCase(private val playRepository: PlayerRepository) {
                 onSuccess(it)
             },
             error = {
-                it.toString()
+                onError(it)
             }
         )
     }

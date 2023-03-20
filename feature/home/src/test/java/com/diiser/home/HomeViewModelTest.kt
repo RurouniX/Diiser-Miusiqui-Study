@@ -1,6 +1,5 @@
-package com.diiser.mylibrary
+package com.diiser.home
 
-import android.R
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.diiser.flowstate.FlowState
 import com.diiser.home.HomeUseCase
@@ -10,14 +9,10 @@ import com.diiser.network.utils.ResponseError
 import com.diiser.testutils.TestProviderContext
 import com.diiser.testutils.readJsonFile
 import io.mockk.*
-import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.runBlocking
 import org.junit.Rule
 import org.junit.Test
 
 class HomeViewModelTest {
-
-    private val pathName = "../feature/home/src/test/java/com/diiser/assets"
 
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
@@ -25,7 +20,7 @@ class HomeViewModelTest {
     private val providerContext = TestProviderContext()
 
     private val searchModel =
-        javaClass.classLoader?.let { readJsonFile<SearchModel>(it.getResourceAsStream("searchModel.json")) }
+        javaClass.classLoader?.run { readJsonFile<SearchModel>(getResourceAsStream("searchModel.json")) }
 
     private val viewModel: HomeViewModel by lazy { HomeViewModel(useCase, providerContext) }
     private val useCase = mockk<HomeUseCase>()
@@ -54,7 +49,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun shouldReturnLoadingState_whenCallHomeDataFunction() {
+    fun shouldReturnErrorState_whenCallHomeDataFunction() {
 
         coEvery {
             useCase.getHomeData(
@@ -71,7 +66,7 @@ class HomeViewModelTest {
     }
 
     @Test
-    fun shouldReturnLoadingState_whenCallHomeDataFunctionLoading() {
+    fun shouldReturnLoadingState_whenCallHomeDataFunction() {
 
         coEvery {
             useCase.getHomeData(
@@ -79,7 +74,7 @@ class HomeViewModelTest {
                 onSuccess = any(),
                 onError = any()
             )
-        } just (runs)
+        } just Runs
 
         viewModel.getHomeData("metal")
         assert(viewModel.homeDataLiveData.value?.status == FlowState.Status.LOADING)
