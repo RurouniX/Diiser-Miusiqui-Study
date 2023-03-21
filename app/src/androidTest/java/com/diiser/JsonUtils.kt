@@ -10,11 +10,12 @@ import java.io.IOException
 import java.io.InputStreamReader
 
 
-//fun response200Home() = readJson(getContext, "result200home.json", SearchModel::class.java)
+fun response200Home() = readJson(context , "result200home.json", SearchModel::class.java)
 fun response200HomeJson() =
-    getAssets.open("result200home.json").bufferedReader().use { it.readText() }
+    assets.open("result200home.json").bufferedReader().use { it.readText() }
 
-private val getAssets = InstrumentationRegistry.getInstrumentation().context.assets
+private val assets = InstrumentationRegistry.getInstrumentation().context.assets
+private val context = InstrumentationRegistry.getInstrumentation().context
 
 private inline fun <reified T> readJson(context: Context, fileName: String, clazz: Class<T>): T {
     val jsonString = getJsonFromAssets(context, fileName)

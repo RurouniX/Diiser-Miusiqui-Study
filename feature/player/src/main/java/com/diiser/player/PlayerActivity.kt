@@ -9,6 +9,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.diiser.model.player.Music
@@ -18,7 +19,7 @@ import com.diiser.player.databinding.ActivityPlayerBinding
 import com.diiser.viewmodelutils.observerEvents
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class PlayerActivity : AppCompatActivity() {
+class PlayerActivity : FragmentActivity() {
 
     private val othersMusicAdapter: OthersMusicAdapter by lazy {
         OthersMusicAdapter {
