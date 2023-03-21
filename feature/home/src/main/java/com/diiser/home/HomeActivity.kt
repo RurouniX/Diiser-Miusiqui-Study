@@ -1,9 +1,9 @@
 package com.diiser.home
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.EditText
 import androidx.core.view.isVisible
+import androidx.fragment.app.FragmentActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.diiser.home.databinding.ActivityHomeBinding
@@ -14,7 +14,7 @@ import com.diiser.stateview.StateView
 import com.google.android.material.internal.ViewUtils
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : FragmentActivity() {
 
     private val homeViewModel: HomeViewModel by viewModel()
 
@@ -55,6 +55,8 @@ class HomeActivity : AppCompatActivity() {
                 homeViewModel.getHomeData()
             }
         }
+
+        R.dimen.abc_text_size_subtitle_material_toolbar
 
     }
 

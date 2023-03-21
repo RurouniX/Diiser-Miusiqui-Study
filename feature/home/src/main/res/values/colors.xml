@@ -7,4 +7,7 @@
 
     <color name="title_color">#5F69C6</color>
 
+    <color name="abc_text_size_subtitle_material_toolbar">@android:color/white</color>
+
+
 </resources>
