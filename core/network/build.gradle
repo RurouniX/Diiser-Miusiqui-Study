@@ -5,7 +5,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.squareup.okhttp3:logging-interceptor:4.3.1'
     implementation project(path: ':core:model')
-    implementation('com.squareup.okhttp3:okhttp:4.3.1')
+    implementation('com.squareup.okhttp3:okhttp:4.10.0')
     debugImplementation 'com.willowtreeapps.hyperion:hyperion-core:0.9.37'
     debugImplementation 'com.willowtreeapps.hyperion:hyperion-timber:0.9.37'
     debugImplementation 'com.willowtreeapps.hyperion:hyperion-core:0.9.37'

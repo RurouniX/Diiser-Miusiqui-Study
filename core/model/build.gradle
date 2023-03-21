@@ -3,7 +3,7 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-parcelize'
 
 dependencies {
-    api 'com.squareup.retrofit2:converter-gson:2.7.1'
+    api 'com.squareup.retrofit2:converter-gson:2.9.0'
 
 }
 
