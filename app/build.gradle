@@ -6,6 +6,8 @@ dependencies {
     implementation project(path: ':core:navigation')
     implementation project(path: ':feature:home')
     implementation project(path: ':feature:player')
+    implementation project(path: ':core:network')
+    implementation project(path: ':core:providercontext')
     androidTestImplementation project(path: ':core:tests:mockwebserver')
 
     androidTestImplementation('com.adevinta.android:barista:4.3.0') {

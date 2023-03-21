@@ -16,6 +16,8 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeActivity : FragmentActivity() {
 
+    private val defaultSearchParameter = "Rock"
+
     private val homeViewModel: HomeViewModel by viewModel()
 
     private lateinit var binding: ActivityHomeBinding
@@ -23,7 +25,7 @@ class HomeActivity : FragmentActivity() {
     private val homeAdapter: HomeViewAdapter by lazy { HomeViewAdapter { clickListHomeItem(it) } }
 
     private val stateView: StateView by lazy { binding.homeStateview }
-    private val listHome: RecyclerView by lazy { binding.list }
+    private val listHome: RecyclerView by lazy { binding.listHome }
     private val searchEditText: EditText by lazy { binding.txtSearch }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -52,16 +54,13 @@ class HomeActivity : FragmentActivity() {
 
         with(stateView) {
             setButtonClick {
-                homeViewModel.getHomeData()
+                homeViewModel.getHomeData(searchEditText.text.toString())
             }
         }
-
-        R.dimen.abc_text_size_subtitle_material_toolbar
-
     }
 
     private fun setupViewModel() {
-        homeViewModel.getHomeData()
+        homeViewModel.getHomeData(defaultSearchParameter)
 
         with(homeViewModel) {
             homeDataLiveData.observerEvents(this@HomeActivity, onSuccess = {

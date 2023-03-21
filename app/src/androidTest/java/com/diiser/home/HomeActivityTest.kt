@@ -1,38 +1,50 @@
 package com.diiser.home
 
-import android.content.Intent
-import androidx.test.core.app.ActivityScenario
-import androidx.test.core.app.ApplicationProvider
 import androidx.test.ext.junit.rules.ActivityScenarioRule
-import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.diiser.mockwebserver.enqueueNoConnectivity
-import okhttp3.mockwebserver.MockWebServer
+import androidx.test.internal.runner.junit4.AndroidJUnit4ClassRunner
 import org.junit.Assert.*
-import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-@RunWith(AndroidJUnit4::class)
+@RunWith(AndroidJUnit4ClassRunner::class)
 class HomeActivityTest {
 
-//    @get:Rule
-//    val intentsTestRule = ActivityScenarioRule(HomeActivity::class.java)
-
-    private lateinit var scenario: ActivityScenario<HomeActivity>
-
-    @Before
-    fun setUp() {
-        val intent = Intent(ApplicationProvider.getApplicationContext(), HomeActivity::class.java)
-
-        scenario = ActivityScenario.launch(intent)
-    }
-
-    private val server = MockWebServer()
+    @get:Rule
+    val intentsTestRule = ActivityScenarioRule(HomeActivity::class.java)
 
     @Test
-    fun useAppContext() {
+    fun shouldShowRockList_whenSuccess_ValidTitleAndSubTitle() {
+        HomeActivityRobot {
+            isLoadingVisible()
+            isListVisible()
+            isFirstItemSoRockTitle()
+            isFirstItemSubTitleRockDanger()
+        }
+    }
 
-        server.enqueueNoConnectivity()
+    @Test
+    fun shouldError_whenTryEmptySearch() {
+        HomeActivityRobot {
+            isLoadingVisible()
+            isListVisible()
+            searchWithEmptyParameter()
+            showErrorView()
+        }
+    }
+
+    @Test
+    fun shouldShowRockList_whenTryAgain_ValidTitleAndSubTitle() {
+        HomeActivityRobot {
+            isLoadingVisible()
+            isListVisible()
+            searchWithEmptyParameter()
+            showErrorView()
+            searchWithRockParameter()
+            isLoadingVisible()
+            isListVisible()
+            isFirstItemSoRockTitle()
+            isFirstItemSubTitleRockDanger()
+        }
     }
 }

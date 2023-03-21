@@ -16,7 +16,11 @@ class HomeUseCase(private val homeRepository: HomeRepository) {
 
         result.handleResultType(
             success = {
-                onSuccess(it)
+                if (it.data == null) {
+                    onError(ResponseError(cause = Throwable("Sem dados para essa busca")))
+                } else {
+                    onSuccess(it)
+                }
             },
             error = {
                 onError(it)

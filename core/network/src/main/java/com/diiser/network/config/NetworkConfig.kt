@@ -10,11 +10,11 @@ import retrofit2.converter.gson.GsonConverterFactory
 private const val BASE_URL = "https://deezerdevs-deezer.p.rapidapi.com"
 private const val DEEZER_BASE_URL = "https://api.deezer.com/"
 
-class NetworkConfig(private val context: Context) {
+class NetworkConfig(private val context: Context, baseUrl: String = BASE_URL) {
 
     val apiService: Api by lazy {
         Retrofit.Builder()
-            .baseUrl(BASE_URL)
+            .baseUrl(baseUrl)
             .client(provideOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(Api::class.java)
@@ -42,11 +42,11 @@ class NetworkConfig(private val context: Context) {
     }
 }
 
-class DeezerNetworkConfig(private val context: Context) {
+class DeezerNetworkConfig(private val context: Context, baseUrl: String = DEEZER_BASE_URL) {
 
     val apiService: DeezerApi by lazy {
         Retrofit.Builder()
-            .baseUrl(DEEZER_BASE_URL)
+            .baseUrl(baseUrl)
             .client(provideOkHttpClient())
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(DeezerApi::class.java)

@@ -23,7 +23,7 @@ private val providerContext: ProviderContext) :
     private val _homeDataLiveData = MutableLiveData<FlowState<SearchModel>>()
     val homeDataLiveData: LiveData<FlowState<SearchModel>> = _homeDataLiveData
 
-    fun getHomeData(search: String = "rock") {
+    fun getHomeData(search: String) {
         _homeDataLiveData.postLoading(View.VISIBLE)
         viewModelScope.launch(providerContext.main) {
             homeUseCase.getHomeData(search, onSuccess = {
