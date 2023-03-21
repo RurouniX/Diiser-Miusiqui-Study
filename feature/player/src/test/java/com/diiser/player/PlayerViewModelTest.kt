@@ -3,6 +3,7 @@ package com.diiser.player
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.diiser.flowstate.FlowState
 import com.diiser.model.home.SearchModel
+import com.diiser.model.player.OthersMusic
 import com.diiser.network.utils.ResponseError
 import com.diiser.testutils.TestProviderContext
 import com.diiser.testutils.readJsonFile
@@ -17,8 +18,8 @@ class PlayerViewModelTest {
 
     private val providerContext = TestProviderContext()
 
-    private val searchModel =
-        javaClass.classLoader?.run { readJsonFile<SearchModel>(getResourceAsStream("othersMusic.json")) }
+    private val othersMusic =
+        javaClass.classLoader?.run { readJsonFile<OthersMusic>(getResourceAsStream("othersMusic.json")) }
 
     private val viewModel: PlayerViewModel by lazy { PlayerViewModel(useCase, providerContext) }
     private val useCase = mockk<PlayerUseCase>()
@@ -33,13 +34,13 @@ class PlayerViewModelTest {
                 onError = any()
             )
         } coAnswers {
-            lambda<(SearchModel) -> Unit>().invoke(searchModel!!)
+            lambda<(OthersMusic) -> Unit>().invoke(othersMusic!!)
         }
 
         viewModel.getOthersMusicByArtist(123456)
         assert(viewModel.musicLiveData.value?.status == FlowState.Status.SUCCESS)
         viewModel.musicLiveData.value?.data?.musicList?.let{
-            assert(it.size == 25)
+            assert(it.size == 1)
             assert(it[0].title == "Metal")
             assert(it[0].duration == 80)
             assert(it[0].link == "https://www.deezer.com/track/1741590727")
